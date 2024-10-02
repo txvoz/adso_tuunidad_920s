@@ -14,3 +14,27 @@ br {
     width: 100%;
     margin-top: 10px;
 }
+
+input.error, select.error {
+    border-color: red !important;
+    color: red !important;
+}
+
+.btns {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+}
+
+.btns.editar {
+    background-image: url(../src/images/editar.png);
+}
+
+.btns.eliminar {
+    background-image: url(../src/images/eliminar.png);
+}
