@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestAdsoController {
 
 
+    //Este servicio sirve para hacer un saludo
     @GetMapping()
     public String holaMundoAdso(){
         return "Hola esto es un saludo desde un WS - SpringBoot";
