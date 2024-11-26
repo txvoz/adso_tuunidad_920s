@@ -21,7 +21,7 @@ public class TestAdsoController {
     }
 
     @GetMapping("/despedir2")
-    public String despedirAdso(){
+    public String despedirAdso2(){
         return "Bye bye";
     }
 
