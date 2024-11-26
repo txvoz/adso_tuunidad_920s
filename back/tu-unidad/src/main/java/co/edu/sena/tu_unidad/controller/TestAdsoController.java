@@ -17,7 +17,7 @@ public class TestAdsoController {
 
     @GetMapping("/despedir")
     public String despedirAdso(){
-        return "Hasta luego gracias por asistir a la sesion";
+        return "Hasta luego gracias por asistir a la sesion editado en linea";
     }
 
 }
