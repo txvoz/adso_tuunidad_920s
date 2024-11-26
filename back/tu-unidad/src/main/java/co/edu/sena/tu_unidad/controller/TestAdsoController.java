@@ -15,4 +15,9 @@ public class TestAdsoController {
         return "Hola esto es un saludo desde un WS - SpringBoot";
     }
 
+    @GetMapping("/despedir")
+    public String despedirAdso(){
+        return "Hasta luego gracias por asistir a la sesion";
+    }
+
 }
