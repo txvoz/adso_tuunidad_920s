@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: tu-unidad
+  datasource:
+    hikari:
+      maximum-pool-size: 5
+    #      connection-timeout: 10000
+    database: ${MYSQL_DATABASE:tunidad_920s}
+    host: ${MYSQL_HOST:localhost}
+    port: ${MYSQL_PORT:3306}
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:}
+    url: jdbc:mysql://${spring.datasource.host}:${spring.datasource.port}/${spring.datasource.database}?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        #dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        show_sql: true
+
+server:
+  port: 8787
