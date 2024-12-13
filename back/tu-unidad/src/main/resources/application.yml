@@ -5,7 +5,7 @@ spring:
     hikari:
       maximum-pool-size: 5
     #      connection-timeout: 10000
-    database: ${MYSQL_DATABASE:sena_adso}
+    database: ${MYSQL_DATABASE:tunidad_920s}
     host: ${MYSQL_HOST:localhost}
     port: ${MYSQL_PORT:3306}
     username: ${MYSQL_USERNAME:root}
