@@ -1,40 +1,31 @@
-var departamentos = [
-    {id:1, name: "Cauca"},
-    {id:2, name: "Valle del Cauca"},
-    {id:3, name: "Nariño"},
-    {id:4, name: "Putumayo"},
-];
+function loadZone(pathOrigin, idElement) {
 
-var municipios = [
-    {id:1, name: "Popayan", id_dep: 1},
-    {id:2, name: "Timbio", id_dep: 1},
-    {id:3, name: "Cali", id_dep: 2},
-    {id:4, name: "Tulua", id_dep: 2},
-    {id:2, name: "Palmira", id_dep: 2},
-    {id:6, name: "Pasto", id_dep: 3},
-    {id:7, name: "Aldana", id_dep: 3},
-    {id:8, name: "Ipiales", id_dep: 3},
-    {id:9, name: "Mocoa", id_dep: 4},
-];
+    $.ajax({
+        url: pathOrigin,
+        type: "GET",
+        success: function (result) {
+            $("#"+idElement).html(result);
+        },
+        error: function (xhr, status, error) {
+        }
+    });
 
-function getUsuarios(){
-    var localJsonData = localStorage.getItem("usuarios");
-    if(localJsonData) {
-        var usuarios = JSON.parse(localJsonData);
-        return usuarios;
-    } else {
-        return [];
-    }
 }
 
-function saveUsuarios(usuarios) {
-    var localJsonData = JSON.stringify(usuarios);
-    localStorage.setItem("usuarios", localJsonData);
+function loadHeader(){
+    var url = 'template/header.html';
+    var idContent = 'content-header';
+    loadZone(url, idContent);
 }
 
-function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-    results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+function loadFooter(){
+    var url = 'template/footer.html';
+    var idContent = 'content-footer';
+    loadZone(url, idContent);
+}
+
+function loadPage(page) {
+    var url = 'template/pages/'+page+'.html';
+    var idContent = 'content-main';
+    loadZone(url, idContent);
 }
