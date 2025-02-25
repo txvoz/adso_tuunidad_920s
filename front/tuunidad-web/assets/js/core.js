@@ -1,7 +1,7 @@
 function loadZone(pathOrigin, idElement) {
-
+    const numeroAleatorio = Math.random(); 
     $.ajax({
-        url: pathOrigin,
+        url: pathOrigin + "?n=" + numeroAleatorio,
         type: "GET",
         success: function (result) {
             $("#"+idElement).html(result);
