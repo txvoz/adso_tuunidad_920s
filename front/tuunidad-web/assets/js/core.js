@@ -82,3 +82,39 @@ function callApi(url, method, data, cbSuccess, cbError) {
 function cbErrorBase(error) {
     alert("El llamado al servidor fallo " + error);
 }
+
+
+function openLoader(){
+    $("#xmask").addClass('show');
+}
+
+function closeLoader(){
+    $("#xmask").removeClass('show');
+}
+
+function addAlert(msg, type, time = null){
+    if(time <= 0) {
+        time = 5;
+    }
+
+    var id = "alert_" + getRandomInt(1000, 99999);
+
+    var html = '<div id="'+id+'" class="alert alert-'+type+'" role="alert" style="display:none">';
+    html += msg;
+    html += "</div>"
+
+    $("#alerts").prepend($(html));
+    $("#"+id).show('fast');
+
+    time = time===null ? 5000 : time * 1000;
+
+    window.setTimeout(function(){
+        $("#"+id).hide('fast');
+    }, time);
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min; // Inclusive of min and max
+  }
