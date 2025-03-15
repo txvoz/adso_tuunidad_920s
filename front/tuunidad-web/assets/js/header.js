@@ -67,16 +67,23 @@ $(function(){
             var ifSuccessLogin = function(apiResponse) {
                 console.log("Login::response " + JSON.stringify(apiResponse));
                 if(apiResponse.data.active) {
-                    alert("Usuario logueado con exito!");
+                    addAlert("Usuario logueado con exito", "success",3);
+                    window.setTimeout(function(){
+                        window.location.replace("http://google.com?q=El usuario inicio sesion yuju!!!!");
+                    }, 5000);
                 } else {
-                    alert("Usuario no encontrado!");
+                    $('#login-form')[0].reset();
+                    addAlert("Usuario no encontrado", "warning");
                 }
+                closeLoader();
             };
 
             var ifErrorLogin = function(data) {
-                alert("Al hacer login se genero un error");
+                addAlert("Se presento un error en el servidor", "danger", 8);
+                closeLoader();
             };
 
+            openLoader();
             callApi(url, method, request, ifSuccessLogin, ifErrorLogin);
         } 
 

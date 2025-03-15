@@ -18,6 +18,12 @@ public class AuthController {
     @PostMapping()
     public ServerResponseDataDto login(@RequestBody LoginRequestDto request){
 
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         LoginResponseDto responseDto = this.service.login(request);
 
         return ServerResponseDataDto.builder()

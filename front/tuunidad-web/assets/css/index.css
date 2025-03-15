@@ -38,3 +38,54 @@ input.error, select.error {
 .btns.eliminar {
     background-image: url(../src/images/eliminar.png);
 }
+
+
+#xmask {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.3);
+    opacity: 0;
+    z-index: -10000;
+
+    transition-property: opacity;
+    transition-duration: 1s;
+}
+
+#xmask.show {
+    opacity: 1;
+    z-index: 10000;
+    display: block;
+}
+
+#xmask .content {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8%;
+    align-items: center;
+    padding: 60px 90px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 200px;
+    max-height: 150px;
+    top: -30%;
+
+    transition-property: top;
+    transition-duration: 2s;
+}
+
+#xmask.show .content {
+    top: 30%;
+}
+
+
+#alerts {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    z-index: 10000;
+    width: 450px;
+    margin: 30px;
+}
