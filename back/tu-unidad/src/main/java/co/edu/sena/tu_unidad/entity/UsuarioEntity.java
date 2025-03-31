@@ -19,9 +19,22 @@ public class UsuarioEntity {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "id_persona")
-    private String idPersona;
+    @Column(name = "estado")
+    private String estado;
 
+    /*@Column(name = "id_persona")
+    private String idPersona;*/
+
+    /*
     @Column(name = "id_rol")
-    private Long idRol;
+    private Long idRol;*/
+
+    @ManyToOne
+    @JoinColumn(name = "id_rol", nullable = false, updatable = true)
+    private RolEntity rol;
+
+    @ManyToOne
+    @JoinColumn(name = "id_persona", nullable = false, updatable = true)
+    private PersonaEntity persona;
+
 }
