@@ -31,7 +31,7 @@ $(function(){
             currentPage = defaultPage;
         }
         $("#main-nav .nav-link.page").removeClass('active');
-        getPage();
+        getPage(currentPage);
     });
 
 
@@ -69,8 +69,10 @@ $(function(){
                 if(apiResponse.data.active) {
                     addAlert("Usuario logueado con exito", "success",3);
                     window.setTimeout(function(){
-                        window.location.replace("http://google.com?q=El usuario inicio sesion yuju!!!!");
-                    }, 5000);
+                        var dataUser = JSON.stringify(apiResponse.data);
+                        localStorage.setItem("data-user", dataUser);
+                        window.location.replace("admin.html?")
+                    }, 2000);
                 } else {
                     $('#login-form')[0].reset();
                     addAlert("Usuario no encontrado", "warning");

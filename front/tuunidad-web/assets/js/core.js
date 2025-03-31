@@ -14,22 +14,31 @@ function loadZone(pathOrigin, idElement) {
 
 }
 
-function loadHeader(){
-    var url = 'template/header.html';
+function loadHeader(root){
+    root = root===null || root === undefined? "": root;
+    var url = 'template/'+root+'header.html';
     var idContent = 'content-header';
     loadZone(url, idContent);
 }
 
-function loadFooter(){
-    var url = 'template/footer.html';
+function loadFooter(root){
+    root = root===null || root === undefined? "": root;
+    var url = 'template/'+root+'footer.html';
     var idContent = 'content-footer';
     loadZone(url, idContent);
 }
 
-function loadPage(page) {
-    var url = 'template/pages/'+page+'.html';
+function loadPage(page, root) {
+    root = root===null || root === undefined ? "": root;
+    var url = 'template/'+root+'pages/'+page+'.html';
     var idContent = 'content-main';
     loadZone(url, idContent);
+}
+
+function getPage(currentPage, root){
+    currentPage = currentPage === null ? defaultPage : currentPage;
+    loadPage(currentPage,root);
+    $("#btn-"+currentPage).addClass('active');
 }
 
 function callApi(url, method, data, cbSuccess, cbError) {
@@ -118,3 +127,25 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min; // Inclusive of min and max
   }
+
+function redirectByLoginUser(logged) {
+    var dataUser = localStorage.getItem("data-user"); 
+
+    if((dataUser === null || dataUser === undefined || dataUser === "") && logged ) {
+        window.location.replace("index.html");
+        return;
+    }
+
+    if((dataUser !== null) && !logged ) {
+        window.location.replace("admin.html");
+        return;
+    }
+
+    if(logged) {
+        var objUser = JSON.parse(dataUser);
+        console.log("USUARIO LOG", objUser);
+        return objUser;
+    }
+
+
+}

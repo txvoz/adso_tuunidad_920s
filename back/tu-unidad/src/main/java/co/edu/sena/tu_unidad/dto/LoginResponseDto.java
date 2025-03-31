@@ -14,7 +14,12 @@ import lombok.NoArgsConstructor;
 public class LoginResponseDto {
 
     private Long id;
-    private Long rol;
+    private String usename;
+    private String nombre;
+    private String tipoIdentificacion;
+    private String identificacion;
+    private String email;
+    private String rol;
     private boolean isActive;
 
 }
