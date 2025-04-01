@@ -149,3 +149,8 @@ function redirectByLoginUser(logged) {
 
 
 }
+
+var ifErrorRequest = function(data) {
+    addAlert("Se presento un error en el servidor", "danger", 8);
+    closeLoader();
+};
