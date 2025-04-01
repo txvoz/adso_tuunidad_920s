@@ -22,7 +22,7 @@ $(function(){
         $("#login-form button[type=submit]").click();
     });
 
-    $("#main-nav .nav-link.page").click(function(){
+    $("#main-nav .nav-link.page, #main-nav .dropdown-item.page").click(function(){
         var pag = $(this).data('tag');
         if(pag && pag !== null && pag !== undefined) {
             currentPage = pag;
@@ -30,7 +30,7 @@ $(function(){
         else {
             currentPage = defaultPage;
         }
-        $("#main-nav .nav-link.page").removeClass('active');
+        $("#main-nav .nav-link.page, #main-nav .dropdown-item.page").removeClass('active');
         getPage(currentPage);
     });
 
