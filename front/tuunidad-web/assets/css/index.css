@@ -1,3 +1,20 @@
+#content-header {
+    position: relative;
+}
+
+#logo{
+    width: 130px;
+    height: 130px;
+    position: relative;
+    left: 0px;
+}
+
+#data-user {
+    top: 58px;
+    right: 0px;
+    position: absolute;
+}
+
 #main-container {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -88,4 +105,8 @@ input.error, select.error {
     z-index: 10000;
     width: 450px;
     margin: 30px;
+}
+
+.hidden {
+    display: none !important;
 }

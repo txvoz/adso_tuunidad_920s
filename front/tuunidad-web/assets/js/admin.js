@@ -7,6 +7,6 @@ $(function(){
     redirectByLoginUser(true);
     loadHeader(rootPath);
     loadFooter(rootPath);
-    getPage(rootPath)
+    getPage("inmueble-dashboard", rootPath)
 
 });

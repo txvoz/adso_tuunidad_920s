@@ -1,4 +1,7 @@
+var prevId = null;
+var inmueble = null;
 $(function(){
+
     cargarTipoInmueble();
 
     $("#formulario-inmueble").on("submit", function(e){
@@ -10,7 +13,12 @@ $(function(){
             "idTipoInmueble": $("#tipo_inmueble").val(),
         }
 
-        guardarNuevoInmueble(request);
+        if(prevId === null) {
+            guardarNuevoInmueble(request);
+        } else {
+            editarInmueble(request);
+        }
+        
 
     });
 
@@ -30,6 +38,49 @@ function guardarNuevoInmueble(request) {
 
 }
 
+function editarInmueble(request) {
+
+    var ifSuccessGetInmueble = function(response){
+        $("#formulario-inmueble")[0].reset();
+        closeLoader();
+        addAlert("Inmueble registrado con exito", "success",3);
+        localStorage.removeItem("id-inmueble");
+    }
+    
+    var url = "http://localhost:8787/inmueble/"+prevId;
+    openLoader();
+    callApi(url, "PUT", request, ifSuccessGetInmueble, ifErrorRequest);
+
+}
+
+
+function validarTipoFormulario(){
+    prevId = localStorage.getItem("id-inmueble");
+    if(prevId === null) {
+        $("#title-new-inmueble").removeClass('hidden');
+    } else {
+        cargarDataInmueble();
+    }
+}
+
+function cargarDataInmueble(){
+    var ifSuccessGetInmueble = function(response){
+        $("#title-edit-inmueble label").html(response.data.nomenclatura);
+        $("#title-edit-inmueble").removeClass('hidden');
+
+        $("#nomenclatura").val(response.data.nomenclatura);
+        $("#m2").val(response.data.m2);
+        $("#tipo_inmueble").val(parseInt(response.data.idTipo)).change();
+        
+        closeLoader();
+    }
+
+    
+    var url = "http://localhost:8787/inmueble/"+prevId;
+    openLoader();
+    callApi(url, "GET", null, ifSuccessGetInmueble, ifErrorRequest);
+}
+
 function cargarTipoInmueble(){
 
     var ifSuccessGetTipoInmueble = function(response){
@@ -41,6 +92,7 @@ function cargarTipoInmueble(){
             $("#tipo_inmueble").append($(itemHtml));
         }    
         closeLoader();
+        validarTipoFormulario();
     }
 
     
