@@ -11,6 +11,8 @@ $(function(){
     });
 
     $("#main-nav .nav-link.page, #main-nav .dropdown-item.page").click(function(){
+        localStorage.removeItem("id-inmueble");
+
         var pag = $(this).data('tag');
         if(pag && pag !== null && pag !== undefined) {
             currentPage = pag;

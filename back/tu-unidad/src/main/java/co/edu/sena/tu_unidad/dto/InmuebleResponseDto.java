@@ -21,6 +21,8 @@ public class InmuebleResponseDto {
 
     private String tipo;
 
+    private Long idTipo;
+
     private String propietario;
 
 }

@@ -1,6 +1,7 @@
 package co.edu.sena.tu_unidad.controller;
 
 import co.edu.sena.tu_unidad.dto.InmuebleRequestDto;
+import co.edu.sena.tu_unidad.dto.InmuebleResponseDto;
 import co.edu.sena.tu_unidad.dto.ServerResponseDataDto;
 import co.edu.sena.tu_unidad.service.InmuebleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,18 @@ public class InmuebleController {
                 .build();
     }
 
+    @PutMapping("/{id}")
+    public ServerResponseDataDto edit(@PathVariable("id") long id, @RequestBody InmuebleRequestDto request) {
+
+        this.service.edit(request, id);
+
+        return ServerResponseDataDto.builder()
+                .status(200)
+                .message("Registro exitoso!")
+                .data(true)
+                .build();
+    }
+
 
     @GetMapping()
     public ServerResponseDataDto getAll(){
@@ -43,6 +56,16 @@ public class InmuebleController {
                 .status(200)
                 .message("Consulta exitosa!")
                 .data(true)
+                .build();
+    }
+
+    @GetMapping("/{id}")
+    public ServerResponseDataDto findById(@PathVariable("id") long id) {
+        InmuebleResponseDto dto = this.service.getById(id);
+        return ServerResponseDataDto.builder()
+                .status(dto!=null ? 200 : 404)
+                .message(dto!=null ? "Consulta exitosa!" : "Recurso no encontrado!")
+                .data(dto)
                 .build();
     }
 

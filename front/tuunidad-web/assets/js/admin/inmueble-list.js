@@ -16,12 +16,16 @@ function cargarInmuebles(){
             html += "<td>"+item.m2+"</td>";
             html += "<td>"+item.tipo+"</td>";
             html += "<td>"+item.propietario+"</td>";
-            html += "<td> <button data-id='"+item.id+"' type='button' class='delete btn btn-outline-danger'>Eliminar</button> </td>";
+            html += "<td>" 
+            html += "<button data-id='"+item.id+"' type='button' class='delete btn btn-outline-danger' style='margin-right:5px'>Eliminar</button>"
+            html += "<button data-id='"+item.id+"' type='button' class='detail btn btn-outline-info'>Editar</button>"
+            html += "</td>";
             html += "</tr>";
 
             $("#inmueble-list tbody").prepend(html);
         }    
         setListenerBtnDeleteInmueble();
+        setListenerDetailInmueble();
         closeLoader();
     }
 
@@ -38,6 +42,18 @@ function setListenerBtnDeleteInmueble(){
             eliminarInmueble(id);
         }
     });
+}
+
+function setListenerDetailInmueble(){
+    $("#inmueble-list .detail").on("click", function(){
+        var id = $(this).data('id');
+        detalleInmueble(id);
+    });
+}
+
+function detalleInmueble(id) {
+    localStorage.setItem("id-inmueble", id);
+    loadPage("inmueble-form", rootPath, "id="+id);
 }
 
 function eliminarInmueble(id) {

@@ -3,7 +3,7 @@ var validMethods = ["GET", "POST", "PUT", "DELETE"];
 function loadZone(pathOrigin, idElement) {
     const numeroAleatorio = Math.random(); 
     $.ajax({
-        url: pathOrigin + "?n=" + numeroAleatorio,
+        url: pathOrigin + "&n=" + numeroAleatorio,
         type: "GET",
         success: function (result) {
             $("#"+idElement).html(result);
@@ -18,21 +18,22 @@ function loadHeader(root){
     root = root===null || root === undefined? "": root;
     var url = 'template/'+root+'header.html';
     var idContent = 'content-header';
-    loadZone(url, idContent);
+    loadZone(url+"?e=h", idContent);
 }
 
 function loadFooter(root){
     root = root===null || root === undefined? "": root;
     var url = 'template/'+root+'footer.html';
     var idContent = 'content-footer';
-    loadZone(url, idContent);
+    loadZone(url+"?e=f", idContent);
 }
 
-function loadPage(page, root) {
+function loadPage(page, root, variables) {
+    variables = variables===null || variables === undefined || variables === "" ? "t=1" : variables;
     root = root===null || root === undefined ? "": root;
     var url = 'template/'+root+'pages/'+page+'.html';
     var idContent = 'content-main';
-    loadZone(url, idContent);
+    loadZone(url+"?"+variables, idContent);
 }
 
 function getPage(currentPage, root){

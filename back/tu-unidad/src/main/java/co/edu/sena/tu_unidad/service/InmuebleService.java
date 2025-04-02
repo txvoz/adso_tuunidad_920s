@@ -42,9 +42,39 @@ public class InmuebleService {
         return dtos;
     }
 
+    public InmuebleResponseDto getById(Long id) {
+
+        Optional<InmuebleEntity> optInmueble =  this.repository.findById(id);
+        if(optInmueble.isPresent()) {
+            return InmuebleResponseDto
+                    .builder()
+                    .id(optInmueble.get().getId())
+                    .nomenclatura(optInmueble.get().getNomenclatura())
+                    .m2(optInmueble.get().getM2())
+                    .tipo(optInmueble.get().getTipoInmueble().getTitulo())
+                    .idTipo(optInmueble.get().getTipoInmueble().getId())
+                    .build();
+        }
+
+        return null;
+
+    }
+
     public void save (InmuebleRequestDto dto) {
 
         InmuebleEntity entity = new InmuebleEntity();
+        entity.setNomenclatura(dto.getNomenclatura());
+        entity.setM2(dto.getM2());
+        TipoInmuebleEntity tipoInmuebleEntity = this.tipoInmuebleService.getById(dto.getIdTipoInmueble());
+        entity.setTipoInmueble(tipoInmuebleEntity);
+
+        this.repository.save(entity);
+
+    }
+
+    public void edit (InmuebleRequestDto dto, Long id) {
+        InmuebleEntity entity = this.repository.findById(id).get();
+
         entity.setNomenclatura(dto.getNomenclatura());
         entity.setM2(dto.getM2());
         TipoInmuebleEntity tipoInmuebleEntity = this.tipoInmuebleService.getById(dto.getIdTipoInmueble());
