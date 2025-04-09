@@ -1,0 +1,75 @@
+<h3 class="hidden" id='title-new-persona'>Formulario nueva persona</h3>
+<h3 class="hidden" id='title-edit-persona'>Formulario edicion de persona <label></label></h3>
+<form id="formulario-persona">
+    <div class="row">
+        <div class="col-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre">
+        </div>
+        <div class="col-3">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="apellido">
+        </div>
+        <div class="col-3">
+            <label for="genero" class="form-label">Genero</label>
+            <select class="form-select" aria-label="Default select example" id="genero">
+                <option value="M">M</option>
+                <option value="F">F</option>
+            </select>
+        </div>
+        <div class="col-3">
+            <label for="fecha-nacimiento" class="form-label">Fecha Nacimiento</label>
+            <input type="date" class="form-control" id="fecha-nacimiento">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <label for="tipo-identificacion" class="form-label">Tipo Identificacion</label>
+            <select class="form-select" aria-label="Default select example" id="tipo-identificacion">
+                <option value="CC">CC</option>
+                <option value="TI">TI</option>
+            </select>
+        </div>
+        <div class="col-3">
+            <label for="identificacion" class="form-label">Identificacion</label>
+            <input type="number" class="form-control" id="identificacion">
+        </div>
+        <div class="col-3">
+            <label for="telefono" class="form-label">Telefono</label>
+            <input type="number" class="form-control" id="telefono">
+        </div>
+        <div class="col-3">
+            <label for="correo" class="form-label">Correo</label>
+            <input type="email" class="form-control" id="correo">
+        </div>
+    </div>
+    <div class="row">
+        
+        <div class="col-3">
+            <label for="municipio" class="form-label">Municipio</label>
+            <select class="form-select" aria-label="Default select example" id="municipio">
+                <option value="679">Popayan</option>
+                <option value="150">Cali</option>
+                <option value="107">Bogota</option>
+            </select>
+        </div>
+        <div class="col-3">
+            <label for="direccion" class="form-label">Direccion</label>
+            <input type="text" class="form-control" id="direccion">
+        </div>
+        <div class="col-3">
+            <label for="zip" class="form-label">Zip</label>
+            <input type="text" class="form-control" id="zip">
+        </div>
+
+    </div>
+    <br>
+
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+<script src="assets/js/admin/persona-form.js"></script>
