@@ -155,3 +155,14 @@ var ifErrorRequest = function(data) {
     addAlert("Se presento un error en el servidor", "danger", 8);
     closeLoader();
 };
+
+function capitalizeAndPluralizeText(text) {
+    return text.toLowerCase()
+               .split(' ')
+               .map(word => {
+                   const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
+                   const plural = capitalized.endsWith('s') ? capitalized : capitalized + 's';
+                   return plural;
+               })
+               .join(' ');
+}

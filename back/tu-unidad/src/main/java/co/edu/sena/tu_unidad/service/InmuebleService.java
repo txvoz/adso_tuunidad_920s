@@ -1,5 +1,6 @@
 package co.edu.sena.tu_unidad.service;
 
+import co.edu.sena.tu_unidad.dto.DashboardResponseDto;
 import co.edu.sena.tu_unidad.dto.InmuebleRequestDto;
 import co.edu.sena.tu_unidad.dto.InmuebleResponseDto;
 import co.edu.sena.tu_unidad.entity.InmuebleEntity;
@@ -8,9 +9,7 @@ import co.edu.sena.tu_unidad.repository.InmuebleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 
 @Service
@@ -89,5 +88,37 @@ public class InmuebleService {
         optionalInmuebleEntity.ifPresent(inmuebleEntity -> this.repository.delete(inmuebleEntity));
     }
 
+
+    public List<DashboardResponseDto> getDashboardData(){
+        HashMap<String, DashboardResponseDto> map = new HashMap<>();
+        List<DashboardResponseDto> response = new ArrayList<>();
+        List<InmuebleEntity> entities = this.repository.findAll();
+
+        for (InmuebleEntity entity: entities) {
+            String tipo = entity.getTipoInmueble().getTitulo();
+            DashboardResponseDto value = map.get(tipo);
+            if(value == null) {
+                value = new DashboardResponseDto();
+                value.setTipo(tipo);
+                value.setId(entity.getTipoInmueble().getId());
+                value.setInmuebles(new ArrayList<>());
+                map.put(tipo, value);
+                response.add(value);
+            }
+            value.getInmuebles().add(DashboardResponseDto.DashaboardItemReponseDto.builder()
+                    .id(entity.getId())
+                    .nomenclatura(entity.getNomenclatura())
+                    .build());
+        }
+
+        for (DashboardResponseDto dto : response) {
+            dto.getInmuebles()
+                    .sort(
+                            Comparator.comparing(DashboardResponseDto.DashaboardItemReponseDto::getNomenclatura)
+                    );
+        }
+
+        return response;
+    }
 
 }

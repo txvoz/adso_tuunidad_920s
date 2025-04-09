@@ -1,0 +1,49 @@
+#zonas .zona {
+    position: relative;
+}
+
+#zonas .zona .elementos {
+    border: 1px solid #999;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+#zonas .zona .elementos .elemento {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    border: 1px dotted #999;
+    border-radius: 8px;
+    text-align: center;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+
+#zonas .zona .elementos .elemento .icono {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 120px;
+    height: 120px;
+}
+
+#zonas .zona .elementos .elemento.casa .icono {
+    background-image: url(../src/images/casa.png);
+}
+
+
+#zonas .zona .elementos .elemento.apto .icono {
+    background-image: url(../src/images/apartamento.png);
+}
+
+
+#zonas .zona .elementos .elemento.parqueadero .icono {
+    background-image: url(../src/images/parqueadero.png);
+}
+
+
+#zonas .zona .elementos .elemento.bodega .icono {
+    background-image: url(../src/images/bodega.png);
+}
