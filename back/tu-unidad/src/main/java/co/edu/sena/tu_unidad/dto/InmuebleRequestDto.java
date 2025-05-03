@@ -17,6 +17,8 @@ public class InmuebleRequestDto {
 
     private String m2;
 
+    private String estado;
+
     private Long idTipoInmueble;
 
 }

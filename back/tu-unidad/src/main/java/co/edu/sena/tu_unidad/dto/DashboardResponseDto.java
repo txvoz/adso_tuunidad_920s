@@ -33,10 +33,17 @@ public class DashboardResponseDto {
 
         private Long id;
 
+        private String estadoInmueble;
 
-        private String estado;
+        private String estadoDetalle;
 
-        private String propietario;
+        private String propietarioPrincipal;
+
+        private List<String> propietarios;
+
+        private List<String> personasAutorizadas;
+
+        private List<String> personasInactivas;
 
 
     }

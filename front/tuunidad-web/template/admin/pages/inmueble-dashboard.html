@@ -3,64 +3,100 @@
 <br>
 <div id="zonas">
 
-    <!-- -- >
-    <div class="zona">
-        <h4>Casas</h4>
-        <div class="elementos">
-            <div class="elemento casa">
-                <label>CAS001</label>
-                <div class="icono"></div>
-            </div>
-            <div class="elemento casa">
-                <label>CAS002</label>
-                <div class="icono"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="zona">
-        <h4>Aptos</h4>
-        <div class="elementos">
-            <div class="elemento apto">
-                <label>APT001</label>
-                <div class="icono"></div>
-            </div>
-            <div class="elemento apto">
-                <label>APT002</label>
-                <div class="icono"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="zona">
-        <h4>Parqueaderos</h4>
-        <div class="elementos">
-            <div class="elemento parqueadero">
-                <label>PAR001</label>
-                <div class="icono"></div>
-            </div>
-            <div class="elemento parqueadero">
-                <label>PAR002</label>
-                <div class="icono"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="zona">
-        <h4>Bodegas</h4>
-        <div class="elementos">
-            <div class="elemento bodega">
-                <label>BOD001</label>
-                <div class="icono"></div>
-            </div>
-            <div class="elemento bodega">
-                <label>BOD002
-                </label>
-                <div class="icono"></div>
-            </div>
-        </div>
-    </div> -->
-
 </div>
+
+<!-- Modal -->
+<div class="modal fade modal-xl" id="detalleModal" tabindex="-1" aria-labelledby="detalleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="detalleModalLabel">Detalle vivienda <label id="nomenclatura">#</label></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row" id="step-1">
+                    <div class="col-12">
+                        <output></output>
+                    </div>
+                    <br>
+                    <div class="d-grid gap-2">
+                        <button style="display: none;" id="addDetalle" type="button" class="btn btn-primary">Agregar detalle</button>
+                    </div>
+                </div>
+                <div class="row" id="step-2" style="display: none;">
+                    <form id="detalle-form" action="#">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre">
+                            </div>
+                            <div class="col-3">
+                                <label for="apellido" class="form-label">Apellido</label>
+                                <input type="text" class="form-control" id="apellido">
+                            </div>
+                            <div class="col-3">
+                                <label for="genero" class="form-label">Genero</label>
+                                <select class="form-select" aria-label="Default select example" id="genero">
+                                    <option value="M">M</option>
+                                    <option value="F">F</option>
+                                </select>
+                            </div>
+                            <div class="col-3">
+                                <label for="fecha-nacimiento" class="form-label">Fecha Nacimiento</label>
+                                <input type="date" class="form-control" id="fecha-nacimiento">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="tipo-identificacion" class="form-label">Tipo Identificacion</label>
+                                <select class="form-select" aria-label="Default select example" id="tipo-identificacion">
+                                    <option value="CC">CC</option>
+                                    <option value="TI">TI</option>
+                                </select>
+                            </div>
+                            <div class="col-3">
+                                <label for="identificacion" class="form-label">Identificacion</label>
+                                <input type="number" class="form-control" id="identificacion">
+                            </div>
+                            <div class="col-3">
+                                <label for="telefono" class="form-label">Telefono</label>
+                                <input type="number" class="form-control" id="telefono">
+                            </div>
+                            <div class="col-3">
+                                <label for="correo" class="form-label">Correo</label>
+                                <input type="email" class="form-control" id="correo">
+                            </div>
+                        </div>
+                        <div class="row">
+                            
+                            <div class="col-3">
+                                <label for="municipio" class="form-label">Municipio</label>
+                                <select class="form-select" aria-label="Default select example" id="municipio">
+                                    <option value="679">Popayan</option>
+                                    <option value="150">Cali</option>
+                                    <option value="107">Bogota</option>
+                                </select>
+                            </div>
+                            <div class="col-3">
+                                <label for="direccion" class="form-label">Direccion</label>
+                                <input type="text" class="form-control" id="direccion">
+                            </div>
+                            <div class="col-3">
+                                <label for="zip" class="form-label">Zip</label>
+                                <input type="text" class="form-control" id="zip">
+                            </div>
+                    
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="display: none;">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>-->
+        </div>
+    </div>
+</div>
+
 <link href="assets/css/inmueble-dashboard.css" rel="stylesheet" media="screen">
 <script src="assets/js/admin/inmueble-dashboard.js?t=8"></script>

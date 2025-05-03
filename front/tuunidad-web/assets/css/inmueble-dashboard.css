@@ -13,13 +13,28 @@
     position: relative;
     display: inline-block;
     vertical-align: top;
-    border: 1px dotted #999;
+    border: 2px dotted #999;
     border-radius: 8px;
     text-align: center;
     margin-right: 10px;
     margin-bottom: 5px;
+    cursor: pointer !important;
 }
 
+#zonas .zona .elementos .elemento.activo {
+    border-color: #4d834d;
+    background-color: rgba(0,100,0, 0.1);
+}
+
+#zonas .zona .elementos .elemento.inactivo {
+    border-color: #834d4d;
+    background-color: rgba(100,0,0, 0.1);
+}
+
+#zonas .zona .elementos .elemento.en_proceso {
+    border-color: #e4cb39;
+    background-color: rgba(255, 238, 54, 0.1);
+}
 
 #zonas .zona .elementos .elemento .icono {
     position: relative;
@@ -28,6 +43,36 @@
     width: 120px;
     height: 120px;
 }
+
+#zonas .zona .elementos .elemento .estado {
+    position: absolute;
+    bottom: 3px;
+    left: 3px;
+    width: 45px;
+    height: 45px;
+    border: 2px solid #999;
+    border-radius: 50%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, .7);
+} 
+
+#zonas .zona .elementos .elemento.activo .estado {
+    border-color: #4d834d;
+    background-image: url(../src/images/estado-activo.png);
+}
+
+#zonas .zona .elementos .elemento.inactivo .estado {
+    border-color: #834d4d;
+    background-image: url(../src/images/estado-inactivo.png);
+}
+
+#zonas .zona .elementos .elemento.en_proceso .estado {
+    border-color: #e4cb39;
+    background-image: url(../src/images/estado-en-proceso.png);
+}
+
+
 
 #zonas .zona .elementos .elemento.casa .icono {
     background-image: url(../src/images/casa.png);
