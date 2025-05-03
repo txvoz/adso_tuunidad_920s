@@ -51,4 +51,7 @@ public class PersonaEntity {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
     private List<UsuarioEntity> usuarios;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
+    private List<DetalleInmueblePersonaEntity> detalleInmueblePersonas;
 }

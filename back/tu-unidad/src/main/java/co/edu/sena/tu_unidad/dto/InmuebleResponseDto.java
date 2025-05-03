@@ -23,6 +23,8 @@ public class InmuebleResponseDto {
 
     private Long idTipo;
 
+    private String estado;
+
     private String propietario;
 
 }
